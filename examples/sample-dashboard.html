@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample dashboard</title>
+<style>
+  :root {
+    --ink: #1B1A18;
+    --muted: #6B6358;
+    --surface: #FFFFFF;
+    --surface-muted: #F1ECE0;
+    --border: #D9CFB6;
+    --accent: #B5482A;
+    --accent-tint: rgba(79, 70, 229, 0.08);
+    --success: #16A34A;
+    --warning: #B5482A;
+    --danger: #B5482A;
+    --radius: 6px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    color: var(--ink);
+    background: var(--surface-muted);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+  header { margin-bottom: 32px; }
+  h1 { margin: 0 0 6px; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+  .lede { margin: 0; font-size: 14px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .card .label { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .card .value { font-size: 28px; font-weight: 600; margin-top: 6px; }
+  .card .delta { margin-top: 4px; font-size: 12px; }
+  .delta.up { color: var(--success); }
+  .delta.down { color: var(--danger); }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  th { text-align: left; padding: 10px 12px; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--surface-muted); border-bottom: 1px solid var(--border); }
+  td { padding: 12px; font-size: 13px; border-bottom: 1px solid #E0D5BC; }
+  tbody tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; padding: 2px 8px; border: 1px solid; border-radius: var(--radius); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+  .pill-success { color: var(--ink); border-color: var(--ink); background: transparent; }
+  .pill-warning { color: var(--accent); border-color: var(--accent); background: transparent; }
+  .pill-danger { color: var(--accent); border-color: var(--accent); background: transparent; }
+  .footer-note { margin-top: 32px; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Sample dashboard</h1>
+    <p class="lede">A self-contained HTML artifact, suitable for testing publish, share, classification, and revert flows.</p>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <div class="label">Total publishes</div>
+      <div class="value">128</div>
+      <div class="delta up">+14 this week</div>
+    </div>
+    <div class="card">
+      <div class="label">Active share links</div>
+      <div class="value">23</div>
+      <div class="delta">7 expiring in 24h</div>
+    </div>
+    <div class="card">
+      <div class="label">Average viewing time</div>
+      <div class="value">4m 12s</div>
+      <div class="delta up">+38s vs last week</div>
+    </div>
+    <div class="card">
+      <div class="label">Confidential dashboards</div>
+      <div class="value">5</div>
+      <div class="delta">no change</div>
+    </div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dashboard</th>
+        <th>Owner</th>
+        <th>Classification</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Q4 revenue review</td>
+        <td>alice@example.com</td>
+        <td><span class="pill pill-warning">Confidential</span></td>
+        <td><span class="pill pill-success">Active</span></td>
+      </tr>
+      <tr>
+        <td>Engineering velocity</td>
+        <td>bob@example.com</td>
+        <td><span class="pill" style="background:#EBE3D0;color:#6B6358;">Internal</span></td>
+        <td><span class="pill pill-success">Active</span></td>
+      </tr>
+      <tr>
+        <td>Public hiring page</td>
+        <td>chris@example.com</td>
+        <td><span class="pill pill-success">Public</span></td>
+        <td><span class="pill" style="background:#EBE3D0;color:#6B6358;">Expired</span></td>
+      </tr>
+      <tr>
+        <td>Board financial pack</td>
+        <td>danielle@example.com</td>
+        <td><span class="pill pill-danger">Confidential</span></td>
+        <td><span class="pill pill-warning">Permanent</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="footer-note">This sample uses inline CSS and no external assets. Replace it with whatever Claude generates for your real use case.</p>
+</main>
+</body>
+</html>

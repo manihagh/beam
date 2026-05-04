@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 1180" font-family="'Source Serif 4', 'Source Serif Pro', Georgia, serif">
+  <defs>
+    <style>
+      .label { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; fill: #B5482A; letter-spacing: 0.18em; }
+      .title { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; fill: #6B6358; letter-spacing: 0.18em; }
+      .heading { font-size: 26px; fill: #1B1A18; }
+      .body { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; fill: #6B6358; }
+      .body-ink { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; fill: #1B1A18; }
+      .meta { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; fill: #6B6358; }
+      .accent { fill: #B5482A; }
+      .tag { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; fill: #6B6358; letter-spacing: 0.12em; }
+      .tagline { font-style: italic; font-size: 14px; fill: #E8DBC1; }
+      .mono-on-ink { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; fill: #F1ECE0; }
+      .accent-on-ink { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; fill: #D9764D; letter-spacing: 0.12em; }
+    </style>
+  </defs>
+
+  <!-- paper -->
+  <rect width="1360" height="1180" fill="#F1ECE0"/>
+
+  <!-- top divider hint -->
+  <line x1="80" y1="50" x2="1280" y2="50" stroke="#E0D5BC" stroke-width="1"/>
+
+  <!-- Title block -->
+  <text x="80" y="90" class="label">BEAM</text>
+  <text x="80" y="115" class="title">ARCHITECTURE</text>
+
+  <!-- Section 1: SURFACES -->
+  <text x="80" y="210" class="title">SURFACES</text>
+
+  <!-- Surface box: Claude -->
+  <rect x="170" y="240" width="370" height="120" rx="8" ry="8" fill="none" stroke="#1B1A18" stroke-width="1"/>
+  <text x="200" y="278" class="tag">CLAUDE</text>
+  <text x="200" y="312" class="heading">MCP custom connector</text>
+  <text x="200" y="340" class="body">11 tools, OAuth 2.1, your domain</text>
+
+  <!-- Surface box: Browser -->
+  <rect x="640" y="240" width="550" height="120" rx="8" ry="8" fill="none" stroke="#1B1A18" stroke-width="1"/>
+  <text x="670" y="278" class="tag">BROWSERS</text>
+  <text x="670" y="312" class="heading">Staff &amp; recipients</text>
+  <text x="670" y="340" class="body">Internal control plane · external share viewer</text>
+
+  <!-- arrows down to Worker -->
+  <line x1="355" y1="360" x2="355" y2="450" stroke="#1B1A18" stroke-width="1"/>
+  <polygon points="355,460 350,448 360,448" fill="#1B1A18"/>
+  <line x1="915" y1="360" x2="915" y2="450" stroke="#1B1A18" stroke-width="1"/>
+  <polygon points="915,460 910,448 920,448" fill="#1B1A18"/>
+
+  <!-- Section 2: THE WORKER -->
+  <text x="80" y="510" class="title">THE WORKER</text>
+
+  <!-- Worker outer box -->
+  <rect x="170" y="540" width="1020" height="270" rx="8" ry="8" fill="none" stroke="#1B1A18" stroke-width="1"/>
+
+  <!-- Worker label/path -->
+  <text x="200" y="578" class="body-ink">github.com/YOUR_USER/beam</text>
+  <text x="200" y="602" class="body">MIT · TypeScript · one Cloudflare Worker</text>
+
+  <!-- Three hostnames inset -->
+  <rect x="200" y="630" width="305" height="155" rx="6" ry="6" fill="none" stroke="#1B1A18" stroke-width="1"/>
+  <text x="220" y="660" class="body-ink">mcp-beam.your-co.com</text>
+  <text x="220" y="685" class="body">MCP endpoint, Access-protected</text>
+  <text x="220" y="715" class="body-ink">beam.your-co.com</text>
+  <text x="220" y="740" class="body">Control plane, Access-protected</text>
+  <text x="220" y="770" class="body-ink">share-beam.your-co.com</text>
+
+  <!-- Capabilities inset -->
+  <rect x="525" y="630" width="335" height="155" rx="6" ry="6" fill="none" stroke="#1B1A18" stroke-width="1"/>
+  <text x="545" y="660" class="body-ink">11 MCP tools</text>
+  <text x="545" y="685" class="body">publish · update · rotate · revoke</text>
+  <text x="545" y="710" class="body">classify · revert · audit</text>
+  <text x="545" y="745" class="body-ink">Per-dashboard</text>
+  <text x="545" y="770" class="body">versions · passwords · classification</text>
+
+  <!-- Free-tier note inset -->
+  <rect x="880" y="630" width="290" height="155" rx="6" ry="6" fill="none" stroke="#1B1A18" stroke-width="1"/>
+  <text x="900" y="660" class="body-ink">Free tier ✓</text>
+  <text x="900" y="685" class="body">Workers: 100k req/day</text>
+  <text x="900" y="710" class="body">R2: 10 GB storage</text>
+  <text x="900" y="735" class="body">KV: 100k reads/day</text>
+  <text x="900" y="770" class="body">No license servers</text>
+
+  <!-- arrow down to storage -->
+  <line x1="680" y1="810" x2="680" y2="880" stroke="#1B1A18" stroke-width="1"/>
+  <polygon points="680,890 675,878 685,878" fill="#1B1A18"/>
+
+  <!-- Section 3: STATE -->
+  <text x="80" y="940" class="title">STATE</text>
+
+  <!-- Storage callout: dark slab like tabh2o reference -->
+  <rect x="170" y="970" width="1020" height="120" rx="8" ry="8" fill="#1B1A18"/>
+  <text x="700" y="1015" class="mono-on-ink" text-anchor="middle">R2 + Cloudflare KV</text>
+  <text x="700" y="1045" class="accent-on-ink" text-anchor="middle">YOUR DOMAIN, YOUR ACCESS LOGS, YOUR AUDIT TRAIL</text>
+  <text x="700" y="1070" class="tagline" text-anchor="middle">no shared backend, no third-party storage, no SaaS</text>
+
+  <!-- bottom divider hint -->
+  <line x1="80" y1="1130" x2="1280" y2="1130" stroke="#E0D5BC" stroke-width="1"/>
+</svg>

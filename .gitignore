@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.mcp-token
+wrangler.toml
+*.bak
+.DS_Store

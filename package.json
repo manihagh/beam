@@ -1,0 +1,21 @@
+{
+  "name": "beam",
+  "version": "1.0.0",
+  "description": "Self-hosted publishing layer for Claude-generated HTML. Runs on Cloudflare's free tier.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "deploy": "./deploy.sh",
+    "dev": "wrangler dev",
+    "tail": "wrangler tail",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "typescript": "^5.5.0",
+    "wrangler": "^3.99.0"
+  },
+  "dependencies": {
+    "qrcode-svg": "^1.1.0"
+  }
+}

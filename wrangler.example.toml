@@ -1,0 +1,79 @@
+# Beam: configure once, deploy anywhere.
+#
+# Copy this file to wrangler.toml and fill in the placeholders below.
+# Everything is env-var driven so the same codebase works for any company.
+#
+# Quick start:
+#   1. cp wrangler.example.toml wrangler.toml
+#   2. Replace YOUR_COMPANY in the three custom domains with your domain.
+#   3. Replace the ALLOWED_SSO_DOMAINS, ADMIN_EMAILS, BRAND_NAME, BRAND_FROM_EMAIL.
+#   4. Pick BRAND_PRIMARY_COLOR (hex, no leading #) for your accent color.
+#   5. Run `./deploy.sh`. The script creates the R2 bucket and KV namespace.
+#
+# After deploy, set up Cloudflare Access on the internal and MCP hosts via
+# the Cloudflare dashboard. See README.md for the exact steps.
+
+name = "beam"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Three custom domains, all served by this single Worker.
+# Replace YOUR_COMPANY.com with the domain you want to publish under.
+routes = [
+  { pattern = "beam.YOUR_COMPANY.com",        custom_domain = true },
+  { pattern = "mcp-beam.YOUR_COMPANY.com",    custom_domain = true },
+  { pattern = "share-beam.YOUR_COMPANY.com",       custom_domain = true }
+]
+
+[[r2_buckets]]
+binding = "DASHBOARDS_BUCKET"
+bucket_name = "beam-dashboards"
+
+[[kv_namespaces]]
+binding = "DASHBOARDS_KV"
+# deploy.sh fills this in on first run by creating the namespace.
+id = "REPLACE_WITH_KV_ID"
+
+[vars]
+# Hostnames must match the routes above.
+SERVE_HOST  = "beam.YOUR_COMPANY.com"
+MCP_HOST    = "mcp-beam.YOUR_COMPANY.com"
+PUBLIC_HOST = "share-beam.YOUR_COMPANY.com"
+
+# Which SSO domains are allowed to authenticate to the internal control plane.
+# Comma-separated, no spaces. Used both as a defense-in-depth check and as the
+# pool of valid email addresses for `set_visibility(uuid, "shared", [...])`.
+ALLOWED_SSO_DOMAINS = "YOUR_COMPANY.com"
+
+# Comma-separated list of admin emails. Admins can create permanent share links
+# and override owner-only mutations. Everyone else can only mutate dashboards
+# they own (i.e., they published).
+ADMIN_EMAILS = "alice@YOUR_COMPANY.com,bob@YOUR_COMPANY.com"
+
+# Branding. Read by the landing, share viewer, and email templates at runtime.
+BRAND_NAME           = "Beam"
+BRAND_PRIMARY_COLOR  = "#B5482A"
+BRAND_FROM_EMAIL     = "beam@YOUR_COMPANY.com"
+
+# Share link defaults. All in hours.
+DEFAULT_SHARE_HOURS  = "72"
+MIN_SHARE_HOURS      = "1"
+MAX_SHARE_HOURS      = "168"
+
+# How many prior versions of each dashboard's HTML to retain.
+# Set to "0" to disable versioning. Cap is 50.
+DASHBOARD_VERSIONS_KEPT = "10"
+
+# MCP_BEARER_TOKEN is set as a secret by deploy.sh. Used only for local dev
+# and as a defense-in-depth fallback if Cloudflare Access is misconfigured.
+# In production, the real auth gate is Cloudflare Access on the MCP host.
+
+# Optional: outbound email via Gmail API as a single dedicated workspace user.
+# If any of these are missing, email sends are silently skipped (the system
+# still works, recipients just do not get the publish/share/visibility emails).
+# Set as Worker secrets, not vars:
+#   wrangler secret put GMAIL_CLIENT_ID
+#   wrangler secret put GMAIL_CLIENT_SECRET
+#   wrangler secret put GMAIL_REFRESH_TOKEN
+#   wrangler secret put UNSUB_SECRET   (any 32+ char random string)
